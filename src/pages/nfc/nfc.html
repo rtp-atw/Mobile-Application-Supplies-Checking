@@ -1,0 +1,53 @@
+<!-- Nav-Bar -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>NFC Scanner</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div class="col-md-6">
+    <h3>Please Scan</h3>
+    <div class="form-group">
+      <ion-label color="primary" fixed>UID:</ion-label>
+      <!-- Input รับค่าการสแกนจาก NFC Reader -->
+      <ion-input maxlength="14" #focusInput type="text" class="form-control" 
+        [(ngModel)]="uid" 
+        (ionFocus)="keyboardDisable()" 
+        (ngModelChange)="findDeviceDetail($event)">
+      </ion-input>
+    </div>
+ <ion-list no-lines>
+   <ion-item>
+      <ion-label>NFC</ion-label>
+      <ion-toggle [(ngModel)]="readingTag" (ngModelChange)="readTag()" [disabled]="disableButton"></ion-toggle>
+   </ion-item>
+   <ion-item>
+    
+    <button ion-button  round small full color="danger"  (click)="scan()">QR</button>
+ </ion-item>
+
+ </ion-list>  
+    <h2>Device List</h2>
+  <ion-list>
+    <ion-item-sliding *ngFor="let device of deviceScanList">
+        <ion-item (click)="navToDetailPage(device.$key)"> 
+          {{device.name}}
+          <div class="item-note" item-right>
+            {{device.status}}
+          </div>
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button outline color="danger" (click)="deleteDevice(device.$key)">
+            <ion-icon name="md-trash">Delete</ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div> 
+</ion-content>
+

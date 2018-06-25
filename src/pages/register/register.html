@@ -1,0 +1,54 @@
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <h2 ion-text class="text-primary">
+        <strong>Register</strong>
+      </h2>
+    </div>
+
+    <!-- Login form -->
+    <form class="list-form">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person" item-start class="text-primary"></ion-icon>
+          Name
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="name" name="name" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person" item-start class="text-primary"></ion-icon>
+          Email
+        </ion-label>
+        <ion-input type="email" [(ngModel)]="email" name="email" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="key" item-start class="text-primary"></ion-icon>
+          Password
+        </ion-label>
+        <ion-input minlength="8" type="password" [(ngModel)]="password" name="password"></ion-input>
+      </ion-item>
+    </form>
+
+    <input type="file" (change)="selectFile($event)" multiple="false"><br><br>
+    
+    <div>
+      <button ion-button icon-start block type="submit" color="primary" tappable (click)="register()"[disabled]="!email || !password">
+        <ion-icon name="log-in"></ion-icon>
+        SIGN UP
+      </button>
+    </div>
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="secondary" tappable (click)="backTologin()"><strong>Go to Login</strong></span>
+    </div>
+
+  </div>
+</ion-content>
+

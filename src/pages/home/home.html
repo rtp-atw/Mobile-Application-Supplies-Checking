@@ -1,0 +1,97 @@
+ <!-- Nav-Bar -->
+ <ion-header>
+  <ion-toolbar color="primary">
+      <button ion-button menuToggle>
+          <ion-icon name="menu">
+          </ion-icon>
+        </button>
+        <ion-title>
+            <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    HOME
+                  </ion-col>
+                  <!-- Digital Clock -->
+                  <ion-col class="padding">
+                      {{clock}}
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+        </ion-title>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content padding class="animated fadeIn">
+
+  <!--  แสดงรายละเอียดชื่อผู้ใช้และรูปภาพ  -->
+  <ion-card no-margin margin-bottom class="full-width round">
+    <ion-item class="border-bottom common-bg">
+      <ion-icon name="person" color="dark" item-left></ion-icon>
+      <p class="padding-ac">{{account}}</p>
+    </ion-item>
+    <ion-item class="common-bg">
+      <ion-avatar item-start>
+        <p class="logo"><img class="avatar" [src]="userAvatar"></p>
+      </ion-avatar>
+      <h2>{{account}}</h2>
+      <p>{{myDate}}</p>
+    </ion-item>
+
+    <!-- รูปภาพ แก้ไขได้ใน .scss (class = "homelogo") -->  
+    <ion-card-content class="common-bg">
+      <p class="homelogo"></p>
+    </ion-card-content>
+    
+    <!-- ปุ่มสร้างโพส -->
+    <ion-row class="common-bg padding">
+      <ion-col>
+        <button ion-button icon-left clear small (click)="addPost()" >
+          <ion-icon name="clipboard" color="dark"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <!-- ปุ่ม Update และ List -->
+  <ion-card no-margin margin-bottom class="full-width round"> 
+    <ion-row class="common-bg">
+      <ion-col>
+        <button ion-button icon-left clear small (click)="pushNfcPage()">
+          <ion-icon name="barcode" color="dark"></ion-icon>
+          <div class="base-text">Update</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small (click)="pushListPage()">
+          <ion-icon name="book" color="dark"></ion-icon>
+          <div class="base-text">Device List</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <!-- แสดงโพสต่างๆ -->
+  <ion-card (press)="pressEventDeletePost($event,text.key)" *ngFor="let text of textBroadcast | async" no-margin margin-bottom class="full-width round common-bg">
+        <ion-item class="common-bg">
+          <ion-avatar item-start>
+              <p class="logo"><img class="avatar" [src]="text.avatar"></p>
+          </ion-avatar>
+          <h2>{{text.user}}</h2>
+          <p>{{text.date}}</p>
+        </ion-item>
+      <ion-card-content>
+        <p>
+          {{text.text}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+    
+  <!-- ปุ่ม Add Device -->
+  <ion-fab bottom right>
+    <button ion-fab (click)="pushAddDevice()"><ion-icon name="add" class="danger"></ion-icon></button>
+  </ion-fab>
+  
+</ion-content>
+
+<!-- tappable (click)="choosePlace('from')" -->

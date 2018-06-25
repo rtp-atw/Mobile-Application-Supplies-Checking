@@ -1,0 +1,163 @@
+<!-- Nav-Bar -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- แสดงข้อมูลต่างๆ (ถ้ารูปแบบชุดข้อมูลมีการเปลี่ยนแปลงต้องแก้ไขส่วนนี้ด้วย) -->
+<ion-content class="animated fadeIn">
+    <ion-slides class="to-top" pager>
+        <ion-slide>
+          <img [src]="img" alt="">
+        </ion-slide>
+    </ion-slides>
+
+    <ion-grid class="border-bottom dark-bg">
+        <ion-row>
+          <ion-col text-center>
+            <div class="text-sm">
+              <div>
+                <ion-icon name="list" class="text-white"></ion-icon>
+                <span ion-text color="light">&nbsp;{{ detail.name }}</span> &nbsp; &nbsp;
+                <ion-icon name="build" class="text-white"></ion-icon> 
+                <span ion-text color="light"> &nbsp; {{ detail.status }}</span>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div class="border-bottom" padding>
+        <span ion-text color="primary" class="bold">Picture</span>
+        <ul class="highlight">
+            <li>
+                <input type="file" (change)="selectFile($event)" multiple="false"> <br><br>
+                <button padding ion-button round full small type="submit" (click)="uploadPhoto(this.id)" [disabled]="!file">Upload Photo</button>    
+            </li>
+        </ul>
+    </div>
+
+      <div class="border-bottom" padding>
+          <span ion-text color="primary" class="bold">DESCRIPTION</span>
+          <ul class="highlight">
+              <li>
+                  <ion-icon name="archive" color="paper"></ion-icon>
+                  <span ion-text color="light"> &nbsp; {{ detail.detail }}</span>
+
+              </li>
+          </ul>
+      </div>
+      
+      <div padding class="border-bottom">
+        <ion-card no-margin margin-bottom class="full-width round common-bg">
+            <ion-item class="common-bg">
+                <ion-avatar item-start>
+                    <p class="logo-detail"></p>
+                  </ion-avatar>
+                  <h2>Detail</h2>
+                  <p>Serial</p>
+            </ion-item>
+            <ion-card-content>
+
+                <ion-icon name="barcode" color="dark"></ion-icon>
+                <span ion-text color="dark">Serial Number : {{detail.serialNumber}}</span><br>
+                <ion-icon name="barcode" color="dark"></ion-icon>
+                <span ion-text color="dark">Old Serial Number : {{ detail.oldSerialNumber }}</span>
+
+            </ion-card-content>
+        </ion-card>
+      
+
+              <ion-card no-margin margin-bottom class="full-width round common-bg">
+                  <ion-item class="common-bg">
+                      <ion-avatar item-start>
+                            <p class="logo-lo"></p>
+                        </ion-avatar>
+                        <h2>Detail</h2>
+                        <p>Location And Date</p>
+                  </ion-item>
+                  <ion-card-content (press)="pressEventLocation($event,detail.key)">
+                    <ion-icon name="map" color="dark"></ion-icon>
+                    <span ion-text color="dark"> Location : {{ detail.location }}</span> <br>
+                    <ion-icon name="calendar" color="dark"></ion-icon>
+                    <span ion-text color="dark">Date : {{ detail.date }}</span>
+                  </ion-card-content>
+              </ion-card>
+
+                <ion-card no-margin margin-bottom class="full-width round common-bg">
+                    <ion-item class="common-bg">
+                        <ion-avatar item-start>
+                                <p class="logo-price"></p>
+                          </ion-avatar>
+                          <h2>Price/Unit</h2>
+                          <p>฿-Baht Thai</p>
+                    </ion-item>
+                    <ion-card-content>
+                        <ion-icon name="pricetag" color="dark"></ion-icon>
+                        <span ion-text color="dark"> &nbsp; {{ detail.pricePerUnit }}</span>
+                    </ion-card-content>
+                </ion-card>
+      </div>
+
+      <div class="border-bottom" padding>
+          <span ion-text color="primary" class="bold">REMARK</span>
+          <ul class="highlight">
+              <li>
+                  <ion-icon name="grid" color="dark"></ion-icon>
+                  <span ion-text color="light"> &nbsp; {{ detail.remark }}</span>
+                  <br>
+              </li>
+              <li>
+                <ion-icon name="pin" color="dark"></ion-icon>
+                <span ion-text color="light">&nbsp;Transfer Status :  {{ detail.transferStatus }}</span>
+                <br>
+                
+            </li>
+          </ul>
+      </div>
+
+      <div class="border-bottom" padding>
+          <span ion-text color="primary" class="bold">STATUS</span>
+          <ul class="highlight">
+              <li>
+                  <ion-icon name="build" color="dark"></ion-icon>
+                  <span ion-text color="light" class="font-status"> &nbsp; {{ detail.status }}</span>
+                  <br>
+              </li>
+          </ul>
+      </div>
+
+      <div class="border-bottom" padding >
+        <span ion-text color="primary" class="bold">Tag UID</span>
+        <ul class="highlight">
+            <li>
+                <ion-icon name="pricetag" color="dark"></ion-icon>
+                <span ion-text color="light" class="font-status" (press)="pressEventTag($event,detail.key)"> &nbsp; {{ detail.tagUID }}</span>
+                <br>
+            </li>
+        </ul>
+    </div>
+
+  <div padding class="container">
+      <div class="row">
+        <div class="col">
+          <button ion-button  round small full color="secondary" (click)="goodConfirm(this.id)" >Good</button>
+        </div>
+        <div class="col">
+          <button ion-button  round small full (click)="fixConfirm(this.id)">Fix</button>
+        </div>
+      </div>
+      <div class="col">
+        <button ion-button  round small full color="danger"  (click)="rejectConfirm(this.id)">Reject</button>
+      </div>
+  </div>
+  <div padding>
+    <button padding ion-button navPop>Go Back</button>
+    <p class="detailcolor">Last Update : {{detail.lastUpdate}}</p>
+  </div>
+
+</ion-content>

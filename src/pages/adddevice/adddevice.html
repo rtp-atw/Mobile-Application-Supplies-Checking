@@ -1,0 +1,91 @@
+<!-- Nav-Bar -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Add Device</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+  <!-- Input field การใส่ข้อมูลช่องต่างๆ (ถ้ารูปแบบชุดข้อมูลมีการเปลี่ยนแปลงต้องแก้ไขส่วนนี้ด้วย) --> 
+  <ion-list>
+    <ion-item>
+      <ion-icon ios="ios-grid" md="md-grid" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>Number</ion-label>
+      <ion-input type="number" placeholder="no" [(ngModel)]="deviceDetail.number"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon ios="ios-key" md="md-key" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>Serial</ion-label>
+      <ion-input type="text" placeholder="serial" [(ngModel)]="deviceDetail.serialNumber"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon ios="ios-contact" md="md-contact" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>Name</ion-label>
+      <ion-input type="text" placeholder="name" [(ngModel)]="deviceDetail.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="calendar" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>Import</ion-label>
+      <ion-datetime displayFormat="D MMM YYYY" [(ngModel)]="myDate"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="pin" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>Location</ion-label>
+      <ion-input type="number" placeholder="location" [(ngModel)]="deviceDetail.location"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="search" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>Status</ion-label>
+      <ion-input type="text" placeholder="status" [(ngModel)]="deviceDetail.status"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="paper" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>Detail</ion-label>
+      <ion-input type="text" placeholder="detail" [(ngModel)]="deviceDetail.detail"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="trending-up" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>Transfer Status</ion-label>
+      <ion-input type="text" placeholder="transferstatus" [(ngModel)]="deviceDetail.transferStatus"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="logo-usd" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>Price/Unit</ion-label>
+      <ion-input type="text" placeholder="price/unit" [(ngModel)]="deviceDetail.pricePerUnit"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="key" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>Old SerialNumber</ion-label>
+      <ion-input type="text" placeholder="old-serialnumber" [(ngModel)]="deviceDetail.oldSerialNumber"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="bookmark" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>Remark</ion-label>
+      <ion-input type="text" placeholder="remark" [(ngModel)]="deviceDetail.remark"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="pricetags" item-start color="primary"></ion-icon>
+      <ion-label color="primary" fixed>UID</ion-label>
+      <ion-input type="text" placeholder="Tag UID" [(ngModel)]="deviceDetail.tagUID"></ion-input>
+    </ion-item><br>
+    
+    <input type="file" (change)="selectFile($event)" multiple="false"> <br><br>
+    <button ion-button outline round type="submit" block (click)="addDevice()">Add Device</button>
+
+  </ion-list>
+</ion-content>

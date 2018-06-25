@@ -1,0 +1,90 @@
+page-detail,
+.detail {
+
+    ul.highlight {
+        padding-left: 0;
+        font-size: 1.5rem;
+        list-style: none;
+    
+        li {
+          margin-bottom: 1rem;
+        }
+      }
+    
+
+/*         font-size: 16px;
+        font-style: normal;
+        font-weight: normal; */
+
+        ion-slides.to-top {
+            height: auto;
+            width: 100%;
+            margin-bottom: -5px;
+          
+            .swiper-pagination {
+              display: block !important;
+          
+              .swiper-pagination-bullet {
+                background: color($colors, light);
+              }
+            }
+          }
+
+          .border-bottom {
+            border-bottom: 1px solid color($colors,light);
+          }
+
+          .dark-bg {
+            background-color: color($colors, dark);
+          }
+
+          .common-bg {
+            background-color: #BDC2BF;
+          }
+          .full-width {
+            width: 100% !important;
+          }
+          .round {
+            border-radius: 1rem;
+            overflow: hidden;
+          }
+          .font-status{
+              font-size: 1.5rem;
+          }
+          
+          
+}
+.logo-detail {
+  width: 40px;
+  height: 40px;
+  margin: 20px auto 0;
+  border-radius: 10%;
+  background: url("../assets/img/folder.png") no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+.logo-lo {
+  width: 40px;
+  height: 40px;
+  margin: 20px auto 0;
+  border-radius: 10%;
+  background: url("../assets/img/placeholder.png") no-repeat;
+  background-size: 100%;
+}
+
+.logo-price {
+  width: 40px;
+  height: 40px;
+  margin: 20px auto 0;
+  border-radius: 10%;
+  background: url("../assets/img/price-tag.png") no-repeat;
+  background-size: 100%;
+}
+.alertTAG {
+  background-color: transparent;
+  box-shadow: none;
+}
+.fixBtn {
+  color: #779ecb;
+}

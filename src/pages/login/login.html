@@ -1,0 +1,43 @@
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="login-content">
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <h2 ion-text class="text-primary">
+        <strong>Login</strong>
+      </h2>
+    </div>
+
+    <!-- Login form -->
+    <form class="list-form">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person" item-start class="text-primary"></ion-icon>
+          Email
+        </ion-label>
+        <ion-input type="email" [(ngModel)]="email" name="name" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="key" item-start class="text-primary"></ion-icon>
+          Password
+        </ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+      </ion-item>
+    </form>
+  <br>
+    <div>
+      <button ion-button icon-start block color="primary" tappable (click)="login()" [disabled]="!email || !password">
+        <ion-icon name="log-in"></ion-icon>
+        SIGN IN
+      </button>
+    </div>
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="secondary" tappable (click)="register()">New here? <strong>Sign up</strong></span>
+      <p ion-text color="secondary" tappable href="http://www.te.kmutnb.ac.th/2560/"><strong>Contact Us</strong></p>      
+    </div>
+
+  </div>
+</ion-content>

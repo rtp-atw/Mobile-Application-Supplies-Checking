@@ -1,0 +1,43 @@
+<!-- Menu Toggle -->
+
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar color="primary" class="user-profile">
+        <ion-grid>
+            <ion-row>
+              <ion-col col-4>
+                  <div class="user-avatar" item-start>
+                    <img class="avatar" [src]="userAvatar">
+                  </div>
+              </ion-col>
+              <ion-col padding-top col-8>
+                <h2 ion-text class="no-margin">
+                  {{userName}}
+                </h2>
+                <span ion-text color="dark">Database : {{databaseStatus}} </span>
+              </ion-col>
+            </ion-row>
+            <button ion-button round icon-lef full small color="light" menuClose (click)="logout()">
+              <ion-icon name="log-out"></ion-icon>
+              Log Out
+            </button>
+          </ion-grid>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <br> 
+    <!-- แสดง page ที่มี ตั้งค่าจาก ตัวแปร pages ในหน้า app.component.ts -->
+    <ion-list no-lines>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          <ion-icon item-left [name]="p.icon" color="primary"></ion-icon>
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

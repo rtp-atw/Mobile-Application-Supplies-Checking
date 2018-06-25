@@ -1,0 +1,38 @@
+<!-- Nav-Bar -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <!-- searchbar -->
+    <ion-searchbar
+      [(ngModel)]="myInput"
+      [showCancelButton]="shouldShowCancel"
+      (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+    
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- แสดงรายชื่ออุปกรณ์ -->
+  <h2 class="head">Device List</h2>
+  <ion-list no-lines>
+    <ion-item-sliding *ngFor="let device of devicelist | deviceFilter: myInput">
+        <ion-item (click)="deviceDetail(device.key)"> 
+          {{device.serialNumber}}
+            <div class="item-note" item-right>
+              {{device.name}}
+            </div>
+        </ion-item>
+        <!-- เลือน ขวา เพื่อลบอุปกรณ์ -->
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="deleteDevice(device.key)">
+            <ion-icon name="md-trash">Delete</ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
+</ion-content>
